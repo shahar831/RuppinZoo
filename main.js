@@ -105,7 +105,6 @@ let visitors = [
 let animals = [
   {
     name: "Lion",
-    privatename: "Max",
     isPredator: true,
     weight: 100,
     height: 120,
@@ -115,7 +114,6 @@ let animals = [
   },
   {
     name: "Elephant",
-    privatename: "Dolly",
     isPredator: false,
     weight: 1200,
     height: 200,
@@ -135,7 +133,6 @@ let animals = [
   },
   {
     name: "Tiger",
-    privatename: "Hugo",
     isPredator: true,
     weight: 100,
     height: 120,
@@ -145,7 +142,6 @@ let animals = [
   },
   {
     name: "Monkey",
-    privatename: "Muchi",
     isPredator: false,
     weight: 100,
     height: 120,
@@ -155,7 +151,6 @@ let animals = [
   },
   {
     name: "Kangaroo",
-    privatename: "Benji",
     isPredator: false,
     weight: 100,
     height: 120,
@@ -165,7 +160,6 @@ let animals = [
   },
   {
     name: "Penguin",
-    privatename: "Eliot",
     isPredator: false,
     weight: 100,
     height: 120,
@@ -175,7 +169,6 @@ let animals = [
   },
   {
     name: "Zebra",
-    privatename: "Nelly",
     isPredator: false,
     weight: 100,
     height: 120,
@@ -185,7 +178,6 @@ let animals = [
   },
   {
     name: "Cheetah",
-    privateName: "Taz",
     isPredator: true,
     weight: 100,
     height: 120,
@@ -231,12 +223,16 @@ function createVisitorsDropdownItems() {
 
 const handleResetClick = () => {
   const resetBTN = document.getElementById("resetB");
-  resetBTN.addEventListener("click", function () {
-    localStorage.clear();
-    location.reload();
-    window.location.href = "./signup.html";
-  });
-}; //צריך להכניס לתוך ADDNAV
+  if (resetBTN) {
+    resetBTN.addEventListener("click", function () {
+      localStorage.clear();
+      location.reload();
+      window.location.href = "./signup.html";
+    });
+  } else {
+    console.log("Reset button not found!");
+  }
+};
 
 const addNavbar = () => {
   let visitorData = localStorage.getItem("currentVisitor");

@@ -5,15 +5,25 @@ function createNewVisitor(event) {
 
   let validInput = validateFormInputs();
 
-  let selectedGender = document.querySelector(
+  let selectedGenderElement = document.querySelector(
     'input[name="gender"]:checked'
-  ).value;
-
+  );
   let selectedImg;
-  if (selectedGender === "male") {
-    selectedImg = "./Animals_pictures/boy_4140068.png";
+
+  if (selectedGenderElement) {
+    let selectedGender = selectedGenderElement.value;
+
+    if (selectedGender === "male") {
+      selectedImg = "./Animals_pictures/boy_4140068.png";
+    } else if (selectedGender === "female") {
+      selectedImg = "./Animals_pictures/girl_4140076.png";
+    }
   } else {
-    selectedImg = "./Animals_pictures/girl_4140076.png";
+    // Handle the case where no gender has been selected
+    // You can set selectedImg to a default image or take other actions
+    console.log("No gender selected");
+    // For example, setting a default image
+    selectedImg = "./Animals_pictures/user_1144709.png"; // Path to a default image
   }
 
   if (validInput) {

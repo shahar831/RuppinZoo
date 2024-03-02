@@ -12,6 +12,7 @@ body {
   background-size: cover;
   min-height: 100vh;
   background-size: 75%;
+  background-size: 90%;
 }
 
 .container {
@@ -21,6 +22,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   opacity: 0.92;
+  box-shadow: 10px;
 }
 
 .screen {
@@ -28,7 +30,7 @@ body {
   position: relative;
   height: 600px;
   width: 360px;
-  box-shadow: 0 0 24px #5c5696;
+  box-shadow: 0 0 24px #074931;
   overflow: hidden;
 }
 
@@ -39,7 +41,7 @@ body {
 }
 
 .screen__background {
-  background: linear-gradient(90deg, #dfdee8, #2c9c66);
+  background: linear-gradient(90deg, #dfdee8, #f8faf9);
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -71,7 +73,7 @@ body {
   width: 220px;
   top: -172px;
   right: 0;
-  background: #a2d8be;
+  background: #f9fbfa;
 }
 
 .screen__background__shape3 {
@@ -79,7 +81,7 @@ body {
   width: 190px;
   top: -24px;
   right: 0;
-  background: linear-gradient(270deg, #14c765, #a2d8be);
+  background: linear-gradient(270deg, #ffffff, #ffffff);
 }
 
 .screen__background__shape4 {
@@ -87,7 +89,7 @@ body {
   width: 200px;
   top: 420px;
   right: 50px;
-  background: #a2d8be;
+  background: #edf2f0;
   border-radius: 60px;
 }
 
@@ -105,7 +107,7 @@ body {
 .signup__icon {
   position: absolute;
   top: 30px;
-  color: #a2d8be;
+  color: #145d3a;
 }
 
 .signup__input {
@@ -121,7 +123,7 @@ body {
 
 .signup__input:focus {
   outline: none;
-  border-bottom-color: #6a679e;
+  border-bottom-color: #034806;
 }
 
 .signup__submit {
@@ -136,8 +138,8 @@ body {
   display: flex;
   align-items: center;
   width: 100%;
-  color: #4c489d;
-  box-shadow: 0 2px 2px #5c5696;
+  color: #034806;
+  box-shadow: 0 2px 2px #074931;
   cursor: pointer;
   transition: border-color 0.2s ease-in-out;
 }

@@ -33,7 +33,9 @@ function renderRelatedAnimals() {
   const currentAnimalHabitat = currentAnimal.habitat; //שמירה שדה ההביטט של החיה הנוכחית
 
   const filteredRelatedAnimals = relatedAnimalsForView.filter(
-    (animal) => animal.habitat === currentAnimalHabitat ///פלטור החיות כדי לקחת רק את המתאימות בשדה ההביט
+    (animal) =>
+      animal.habitat === currentAnimalHabitat &&
+      animal.name !== currentAnimal.name ///פלטור החיות כדי לקחת רק את המתאימות בשדה ההביט
   );
 
   const relatedAnimalCards = filteredRelatedAnimals.map(getReAnimalHtmlCard); ///יצירת מערך חיות חדש
