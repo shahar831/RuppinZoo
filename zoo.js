@@ -111,17 +111,3 @@ function setFilter(filterKey, filterValue) {
 
 document.body.insertAdjacentElement("afterbegin", getSearchBox());
 window.addEventListener("load", renderAvailableAnimals);
-
-/**const dialog = document.querySelector("dialog");
-const showButton = document.querySelector("dialog + feed-animal");
-const closeButton = document.querySelector("dialog feed-animal");
-
-// "Show the dialog" button opens the dialog modally
-showButton.addEventListener("click", () => {
-  dialog.showModal();
-});
-
-// "Close" button closes the dialog
-closeButton.addEventListener("click", () => {
-  dialog.close();
-});**/
