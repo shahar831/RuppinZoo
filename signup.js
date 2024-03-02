@@ -20,10 +20,8 @@ function createNewVisitor(event) {
     }
   } else {
     // Handle the case where no gender has been selected
-    // You can set selectedImg to a default image or take other actions
     console.log("No gender selected");
-    // For example, setting a default image
-    selectedImg = "./Animals_pictures/user_1144709.png"; // Path to a default image
+    selectedImg = "./Animals_pictures/user_1144709.png";
   }
 
   if (validInput) {
@@ -35,9 +33,9 @@ const validateFormInputs = () => {
   if (!nameInput.value) {
     // validate there is text in the inputs
     alert("You must provide your personal details");
-    return false; // Return false if validation fails
+    return false;
   }
-  return true; // Return true if validation passes
+  return true;
 };
 
 const makeVisitor = (name, selectedImg) => {
