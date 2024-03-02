@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="signup.css" />
+    <title>Signup</title>
+    <script src="./main.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="screen">
+        <div class="screen__content">
+          <form id="create-visitor-form" class="create-visitor-form">
+            <div class="signup__field">
+              <i class="signup__icon fas fa-user"></i>
+              <input
+                type="text"
+                id="fname"
+                class="signup__input"
+                placeholder="Visitor name"
+              />
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="gender"
+                id="Male"
+                value="Male"
+              />
+              <label class="form-check-label" for="Male">Male</label>
+            </div>
+            <br />
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="gender"
+                id="Female"
+                value="Female"
+              />
+              <label class="form-check-label" for="Female">Female</label>
+            </div>
+            <button class="button signup__submit">
+              <span
+                class="button__text"
+                type="submit"
+                onclick="window.location.href='./login.html'"
+                >Submit</span
+              >
+              <i class="button__icon fas fa-chevron-right"></i>
+            </button>
+            <button class="button signup__submit">
+              <span
+                class="button__text"
+                type="submit"
+                onclick="window.location.href='./login.html'"
+                >Already signup? click here!</span
+              >
+              <i class="button__icon fas fa-chevron-right"></i>
+            </button>
+          </form>
+        </div>
+        <div class="screen__background">
+          <span
+            class="screen__background__shape screen__background__shape4"
+          ></span>
+          <span
+            class="screen__background__shape screen__background__shape3"
+          ></span>
+          <span
+            class="screen__background__shape screen__background__shape2"
+          ></span>
+          <span
+            class="screen__background__shape screen__background__shape1"
+          ></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- לאחר יצירה, הוסיפו אותו למערך האורחים ושמרו את מערך האורחים המעודכן בלוקל סטורג' -->
+    <!-- עברו לעמוד התחברות כדי לבחור את האורח שאיתו תכנסו לגן החיות -->
+
+    <!-- ממשו את הלוגיקה של היצירה, בפונקציה שהוגדרה מראש בקובץ signup.js -->
+
+    <script src="./signup.js"></script>
+  </body>
+</html>

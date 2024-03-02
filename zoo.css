@@ -1,0 +1,78 @@
+body {
+  background-size: cover;
+  min-height: 100vh;
+  background-size: 75%;
+  justify-content: center;
+}
+
+#animal-cards {
+  display: flex;
+  align-items: center;
+  gap: 10px 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 30px;
+}
+
+#zoo-title {
+  text-align: center; /* Center the text */
+  width: 100%; /* Ensure the title element spans the full width */
+  margin-top: 20px; /* Add some space on the top, adjust as needed */
+}
+
+.animal-class {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20%;
+  border-color: rgb(127, 157, 255);
+  background-color: bisque;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.card-img-top {
+  display: flex;
+}
+
+#Visit {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #13bb62;
+  --bs-btn-border-color: #13bb62;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #13bb62;
+  --bs-btn-hover-border-color: #13bb62;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: #13bb62;
+  --bs-btn-active-border-color: #13bb62;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #13bb62;
+  --bs-btn-disabled-border-color: #13bb62;
+  margin: 20px;
+}
+
+input.form-control {
+  width: 250px;
+}
+
+.input-group {
+  width: 250px;
+}
+.inputGroup-sizing-sm {
+  width: 250px;
+}
+
+.filterDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.dropdown-toggle {
+}

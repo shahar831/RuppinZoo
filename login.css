@@ -1,0 +1,72 @@
+body {
+  background: url("../Animals_pictures/visitorsBack.jpg") no-repeat center;
+  background: rgb(22, 214, 131);
+  background: linear-gradient(74deg, #a5dd9b 18%, #f6f193 57%);
+  padding: 20px 80px;
+}
+#placeholder {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.visitors-card {
+  max-width: 250px;
+  overflow: hidden;
+  background: white;
+  border-radius: 20px;
+  animation: fade-in 0.4s ease-in forwards;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center children horizontally in the flex container */
+  align-items: center;
+}
+
+.visitors-card img {
+  justify-self: center;
+  width: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  max-height: 180px;
+  margin: 0 auto;
+  max-width: 250px;
+}
+
+.visitors-card p {
+  text-align: center;
+  padding: 2px 6px;
+}
+
+.visitors-card p.price::after {
+  content: "₪";
+}
+
+.empty-result {
+  width: 100%;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+}
+
+dialog {
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translate(-10px, 10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

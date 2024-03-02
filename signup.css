@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Raleway", sans-serif;
+}
+
+body {
+  background: url("./Animals_pictures/finelBackground.jpg") no-repeat center;
+  background-size: cover;
+  min-height: 100vh;
+  background-size: 75%;
+}
+
+.container {
+  display: flex;
+  transform: scale(0.8);
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  opacity: 0.92;
+}
+
+.screen {
+  background: linear-gradient(90deg, #dddce3, #a2d8be);
+  position: relative;
+  height: 600px;
+  width: 360px;
+  box-shadow: 0 0 24px #5c5696;
+  overflow: hidden;
+}
+
+.screen__content {
+  z-index: 1;
+  position: relative;
+  height: 100%;
+}
+
+.screen__background {
+  background: linear-gradient(90deg, #dfdee8, #2c9c66);
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.screen__background__shape {
+  transform: rotate(45deg);
+  position: absolute;
+}
+
+.screen__background__shape1,
+.screen__background__shape2,
+.screen__background__shape3,
+.screen__background__shape4 {
+  background: #fff;
+  border-radius: 32px;
+}
+
+.screen__background__shape1 {
+  height: 520px;
+  width: 520px;
+  top: -50px;
+  right: 120px;
+  border-radius: 0 72px 0 0;
+}
+
+.screen__background__shape2 {
+  height: 220px;
+  width: 220px;
+  top: -172px;
+  right: 0;
+  background: #a2d8be;
+}
+
+.screen__background__shape3 {
+  height: 540px;
+  width: 190px;
+  top: -24px;
+  right: 0;
+  background: linear-gradient(270deg, #14c765, #a2d8be);
+}
+
+.screen__background__shape4 {
+  height: 400px;
+  width: 200px;
+  top: 420px;
+  right: 50px;
+  background: #a2d8be;
+  border-radius: 60px;
+}
+
+.create-visitor-form {
+  width: 320px;
+  padding: 30px;
+  padding-top: 156px;
+}
+
+.signup__field {
+  padding: 20px 0;
+  position: relative;
+}
+
+.signup__icon {
+  position: absolute;
+  top: 30px;
+  color: #a2d8be;
+}
+
+.signup__input {
+  border: none;
+  border-bottom: 2px solid #d1d1d4;
+  background: none;
+  padding: 10px;
+  padding-left: 24px;
+  font-weight: 700;
+  width: 75%;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.signup__input:focus {
+  outline: none;
+  border-bottom-color: #6a679e;
+}
+
+.signup__submit {
+  background: #fff;
+  font-size: 14px;
+  margin-top: 30px;
+  padding: 16px 20px;
+  border-radius: 26px;
+  border: 1px solid #d4d3e8;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: #4c489d;
+  box-shadow: 0 2px 2px #5c5696;
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.signup__submit:hover {
+  border-color: #0a4c30;
+}
+
+.button__icon {
+  font-size: 24px;
+  margin-left: auto;
+  color: #0a4c30;
+}
+
+.social-login {
+  position: absolute;
+  height: 140px;
+  width: 160px;
+  text-align: center;
+  bottom: 0px;
+  right: 0px;
+  color: #fff;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-Signup__icon {
+  padding: 20px 10px;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0px 0px 8px #0a4c30;
+}
+
+.social-Signup__icon:hover {
+  transform: scale(1.5);
+}
