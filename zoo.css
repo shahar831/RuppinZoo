@@ -1,15 +1,16 @@
 body {
   background-size: cover;
-  min-height: 100vh;
   background-size: 100%;
   justify-content: center;
-  background-color: rgb(7, 196, 133);
+  background: linear-gradient(74deg, #fff67e 18%, #c0ea7cb4);
+  background-size: cover;
+  /**background-size: 90%**/
 }
 
 #animal-cards {
   display: flex;
   align-items: center;
-  gap: 10px 40px;
+  gap: 40px 40px;
   justify-content: center;
   flex-wrap: wrap;
   margin: 30px;
@@ -28,7 +29,9 @@ body {
   align-items: center;
   border-radius: 20%;
   border-color: rgb(127, 157, 255);
-  background-color: bisque;
+  background-color: rgb(123, 234, 229);
+  box-shadow: inset 0 -3em 3em rgba(209, 236, 209, 0.3), 0 0 0 2px white,
+    0.3em 0.3em 1em rgba(139, 237, 128, 0.6);
 }
 
 .card-body {
@@ -41,19 +44,20 @@ body {
 
 #Visit {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #13bb62;
-  --bs-btn-border-color: #13bb62;
+  --bs-btn-bg: #9bcf53;
+  --bs-btn-border-color: #9bcf53;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #13bb62;
-  --bs-btn-hover-border-color: #13bb62;
+  --bs-btn-hover-bg: #9bcf53;
+  --bs-btn-hover-border-color: #9bcf53;
   --bs-btn-focus-shadow-rgb: 49, 132, 253;
   --bs-btn-active-color: #ffffff;
-  --bs-btn-active-bg: #13bb62;
-  --bs-btn-active-border-color: #13bb62;
+  --bs-btn-active-bg: #9bcf53;
+  --bs-btn-active-border-color: #9bcf53;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #13bb62;
-  --bs-btn-disabled-border-color: #13bb62;
+  --bs-btn-disabled-bg: #9bcf53;
+  --bs-btn-disabled-border-color: #9bcf53;
+  border-radius: 15px;
   margin: 20px;
 }
 
@@ -81,7 +85,7 @@ input.form-control {
   align-items: center;
   gap: 10px;
   border-radius: 30px;
-  background-color: rgb(15, 249, 237);
+  background-color: rgb(123, 234, 229);
   width: 1000px;
   margin: 40px;
   box-shadow: inset 0 -3em 3em rgba(209, 236, 209, 0.3), 0 0 0 2px white,

@@ -27,6 +27,7 @@ const getVisitorHTMLCard = (visitor) => {
   /*wrapper.addEventListener("click", () => handleVisitorsClick(visitor));*/
 
   const btnZoo = document.createElement("button");
+  btnZoo.id = "btnZoo";
   btnZoo.className = "btn btn-primary";
   btnZoo.innerText = "Login";
   wrapper.appendChild(btnZoo);

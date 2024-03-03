@@ -12,7 +12,7 @@ body {
   height: 1000px;
   background: url("../Animals_pictures/visitorsBack.jpg") no-repeat center;
   background: rgb(22, 214, 131);
-  background: linear-gradient(74deg, #a5dd9b 18%, #f6f193 57%);
+  background: linear-gradient(74deg, #fff67e 18%, #c0ea7cb4);
   padding: 20px 80px;
 }
 #placeholder {
@@ -65,12 +65,14 @@ body {
   min-height: 90vh;
 }
 
-.btn-primary {
+#btnZoo {
   color: #fff;
-  background-color: #29f975;
+  background-color: #9bcf53;
   border-color: #ededed;
+  border-radius: 15px;
   margin: 20px;
 }
+
 /**.empty-result {
   width: 100%;
   text-align: center;
