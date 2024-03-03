@@ -13,14 +13,13 @@ function createNewVisitor(event) {
   if (selectedGenderElement) {
     let selectedGender = selectedGenderElement.value;
 
-    if (selectedGender === "male") {
+    if (selectedGender === "Male") {
       selectedImg = "./Animals_pictures/boy_4140068.png";
-    } else if (selectedGender === "female") {
+    } else if (selectedGender === "Female") {
       selectedImg = "./Animals_pictures/girl_4140076.png";
     }
   } else {
     // Handle the case where no gender has been selected
-    console.log("No gender selected");
     selectedImg = "./Animals_pictures/user_1144709.png";
   }
 
@@ -40,6 +39,7 @@ const validateFormInputs = () => {
 
 const makeVisitor = (name, selectedImg) => {
   let foundVisitor = visitors.find((visitor) => visitor.name === name);
+
   if (!foundVisitor) {
     let newVisitor = { name: nameInput.value, coins: 50, img: selectedImg };
 
@@ -50,11 +50,10 @@ const makeVisitor = (name, selectedImg) => {
     console.log(storedVisitors);
 
     nameInput.value = "";
-  }
-
-  if (foundVisitor) {
+  } else {
     alert("You alredy sign in");
   }
+  window.location.href = "./login.html";
 };
 
 const createForm = document.getElementById("create-visitor-form");

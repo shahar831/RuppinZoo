@@ -18,8 +18,17 @@
   <body>
     <!-- צרו את הטופס בחירת אורח כאן מעל הסקריפט -->
     <div id="placeholder"></div>
+    <!-- אולי צריך למחוק את הקלאסס-->
     <button id="btn"></button>
-    <dialog id="visitors-dialog"></dialog>
+
+    <dialog id="visitors-dialog" class="modal">
+      <div>
+        <p id="text">Someone already login do you want to logout?</p>
+      </div>
+      <button id="close-button">No</button>
+      <button id="logout-button">Yes</button>
+    </dialog>
+
     <script src="./login.js"></script>
   </body>
 </html>

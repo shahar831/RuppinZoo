@@ -1,6 +1,9 @@
 const visitor = JSON.parse(localStorage.getItem("visitors"));
 let visitorsForView = [...visitors];
+
 const dialog = document.querySelector("#visitors-dialog");
+const closeModal = document.querySelector("#close-button");
+const logOutBtn = document.querySelector("#logout-button");
 
 function loginAsVisitor(visitorName) {
   localStorage.setItem("currentVisitor", JSON.stringify(visitorName));
@@ -25,7 +28,7 @@ const getVisitorHTMLCard = (visitor) => {
 
   const btnZoo = document.createElement("button");
   btnZoo.className = "btn btn-primary";
-  btnZoo.innerText = "go to zoo";
+  btnZoo.innerText = "Login";
   wrapper.appendChild(btnZoo);
 
   wrapper.addEventListener("click", (e) => {
@@ -38,19 +41,6 @@ const getVisitorHTMLCard = (visitor) => {
 
   return wrapper;
 };
-
-/**const getCloseModalHTMLButton = () => {
-    const closeButton = document.createElement("button");
-    closeButton.innerText = " Close modal";
-    closeButton.addEventListener("click", () => dialog.close());
-    return closeButton;
-  };**/
-
-/**const handleVisitorsClick = (visitor) => {
-    dialog.innerHTML = "";
-    dialog.append(getCloseModalHTMLButton(), getVisitorHTMLCard(visitor));
-    dialog.showModal();
-  };**/
 
 const getSearchBox = () => {
   const queryInput = document.createElement("input");
@@ -106,5 +96,33 @@ const goToZoo = () => {
   goToZooBtn.addEventListener("click", loginAsVisitor);
 };
 
+closeModal.addEventListener("click", () => {
+  dialog.close();
+});
+
+logOutBtn.addEventListener("click", () => {
+  logout();
+});
+
+function cheackIfSomeoneLogin() {
+  if (localStorage.getItem("currentVisitor")) {
+    dialog.show();
+  }
+  return;
+}
+
 document.body.insertAdjacentElement("afterbegin", getSearchBox());
-window.addEventListener("load", renderVisitors);
+window.addEventListener("load", renderVisitors /**cheackIfSomeoneLogin**/);
+
+/**const getCloseModalHTMLButton = () => {
+  const closeButton = document.createElement("button");
+  closeButton.innerText = "Close modal";
+  closeButton.addEventListener("click", () => dialog.close());
+  return closeButton;
+};
+
+const handleVisitorsClick = (visitor) => {
+  dialog.innerHTML = "";
+  dialog.append(getCloseModalHTMLButton(), getVisitorHTMLCard(visitor));
+  dialog.showModal();
+};**/

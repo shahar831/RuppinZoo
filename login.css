@@ -1,4 +1,15 @@
+#close-button,
+#logout-button {
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-top: 15px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+
 body {
+  height: 1000px;
   background: url("../Animals_pictures/visitorsBack.jpg") no-repeat center;
   background: rgb(22, 214, 131);
   background: linear-gradient(74deg, #a5dd9b 18%, #f6f193 57%);
@@ -19,8 +30,8 @@ body {
   border-radius: 20px;
   animation: fade-in 0.4s ease-in forwards;
   display: flex;
-  flex-direction: column; /* Stack children vertically */
-  justify-content: center; /* Center children horizontally in the flex container */
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -53,6 +64,23 @@ body {
   justify-content: center;
   min-height: 90vh;
 }
+
+.btn-primary {
+  color: #fff;
+  background-color: #29f975;
+  border-color: #ededed;
+  margin: 20px;
+}
+/**.empty-result {
+  width: 100%;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+}**/
 
 dialog {
   border: 1px solid #000;

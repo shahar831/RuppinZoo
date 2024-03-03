@@ -207,6 +207,7 @@ generateDataset();
 
 //********************** */
 function logout() {
+  localStorage.removeItem("currentVisitor");
   //ממשו את הלוגיקה שמתנתקת מאורח מחובר
   // שימו לב לנקות את השדה המתאים בלוקל סטורג'
 }
@@ -215,7 +216,7 @@ function createVisitorsDropdownItems() {
   let visitorsArray = JSON.parse(localStorage.getItem("visitors"));
   let visitorsDropdownItems = visitorsArray
     .map((visitor) => {
-      return `<li><a class="dropdown-item" href="#">${visitor.name}</a></li>`;
+      return `<li><a id="dropdown-item" class="dropdown-item" href="#">${visitor.name}</a></li>`;
     })
     .join(""); // Join all the individual list item strings
   return visitorsDropdownItems;
@@ -231,6 +232,17 @@ const handleResetClick = () => {
     });
   } else {
     console.log("Reset button not found!");
+  }
+};
+
+const handleDashClick = () => {
+  const dashBtn = document.getElementById("dashBtn");
+  if (dashBtn)
+    dashBtn.addEventListener("click", () => {
+      window.location.href = "./dashboard.html";
+    });
+  else {
+    console.log("Dash button not found!");
   }
 };
 
@@ -256,8 +268,12 @@ const addNavbar = () => {
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page">Coins: ${visitorData.coins}</a>
             </li>
+            
             <li class="nav-item">
             <button id ="resetB" class="nav-link active reset" aria-current="page">Reset</button>
+            </li>
+            <li class="nav-item">
+            <button id ="dashBtn" class="nav-link active reset" aria-current="page">Dashboard</button>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -288,6 +304,7 @@ const addNavbar = () => {
   }
 
   handleResetClick();
+  handleDashClick();
 
   return wrapper2;
 };
