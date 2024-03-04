@@ -41,7 +41,13 @@ const makeVisitor = (name, selectedImg) => {
   let foundVisitor = visitors.find((visitor) => visitor.name === name);
 
   if (!foundVisitor) {
-    let newVisitor = { name: nameInput.value, coins: 50, img: selectedImg };
+    let newVisitor = {
+      name: nameInput.value,
+      coins: 50,
+      img: selectedImg,
+      AnimalVisited: [],
+      AnimalFeeden: [],
+    };
 
     visitors.push(newVisitor);
 

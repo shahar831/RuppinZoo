@@ -289,6 +289,7 @@ const addNavbar = () => {
 `;
 
   const wrapper2 = document.createElement("nav");
+  wrapper2.id = "navbarID";
   wrapper2.className = "navbar navbar-expand-lg bg-body-tertiary";
   wrapper2.innerHTML = navbarHTML;
 

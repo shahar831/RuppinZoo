@@ -1,5 +1,26 @@
 let animalsForView = [...animals];
 
+let currentFilters = {
+  isPredator: null,
+  habitat: null,
+  weight: null,
+  height: null,
+  color: null,
+};
+function applyFilters() {
+  animalsForView = animals.filter((animal) => {
+    return (
+      (!currentFilters.isPredator ||
+        animal.isPredator === currentFilters.isPredator) &&
+      (!currentFilters.habitat || animal.habitat === currentFilters.habitat) &&
+      (!currentFilters.weight || animal.weight >= currentFilters.weight) &&
+      (!currentFilters.height || animal.height >= currentFilters.height) &&
+      (!currentFilters.color || animal.color === currentFilters.color)
+    );
+  });
+  renderAvailableAnimals();
+}
+
 function renderAvailableAnimals() {
   const animalCards = animalsForView.map(getAnimalHtmlCard); //מערך חדש של חיות
 
@@ -59,8 +80,6 @@ const getAnimalHtmlCard = (animal) => {
   btnAnimal.innerText = "Visit";
   wrapper.appendChild(btnAnimal);
   btnAnimal.addEventListener("click", () => visitAnimal(animal));
-
-  /**wrapper.addEventListener("click", () => handleAnimalClick(animal));**/
   return wrapper;
 };
 
@@ -84,7 +103,7 @@ const clearSearchBox = () => {
   const input = document.getElementById("query-input");
   input.value = "";
   animalsForView = [...animals];
-  renderProducts();
+  renderAvailableAnimals();
 };
 
 function visitAnimal(animalName) {
@@ -96,18 +115,52 @@ function visitAnimal(animalName) {
 }
 
 function setFilter(filterKey, filterValue) {
-  /**
-   * ממשו את הלוגיקה של השמת פילטר
-   * הפילטרים הקיימים הם
-   * isPredator: true | false
-   * habitat: "land" | "sea"
-   * weight: value > user selected weight
-   * height: value > user selected height
-   * color: dropdown of all available colors
-   */
-  // ודאו כי אתם שומרים את הפילטרים שהיוזר בחר בלוקל סטורג׳ וטוענים אותם בהתאם
-  // רנדרו רק את החיות שעומדות בתנאים של הפילטרים
+  currentFilters[filterKey] = filterValue === "any" ? null : filterValue;
+  applyFilters();
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Event listener for the weight filter
+  document
+    .getElementById("weight-filter")
+    .addEventListener("input", function () {
+      setFilter("weight", this.value ? parseFloat(this.value) : null);
+    });
+
+  // Event listener for the height filter
+  document
+    .getElementById("height-filter")
+    .addEventListener("input", function () {
+      setFilter("height", this.value ? parseFloat(this.value) : null);
+    });
+
+  // Event listener for the color filter
+  document
+    .getElementById("color-filter")
+    .addEventListener("change", function () {
+      setFilter("color", this.value || null);
+    });
+
+  // Event listener for the habitat filter
+  document
+    .getElementById("habitat-filter")
+    .addEventListener("change", function () {
+      setFilter("habitat", this.value || null);
+    });
+
+  // Event listener for the isPredator filter
+  document
+    .getElementById("predator-filter")
+    .addEventListener("change", function () {
+      setFilter(
+        "isPredator",
+        this.value === "Yes" ? "Yes" : this.value === "No" ? "No" : null
+      );
+    });
+
+  // Initial rendering of animals
+  renderAvailableAnimals();
+});
 
 document.body.insertAdjacentElement("afterbegin", getSearchBox());
 window.addEventListener("load", renderAvailableAnimals);

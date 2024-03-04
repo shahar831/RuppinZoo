@@ -64,3 +64,8 @@ dialog {
 #related-animals {
   margin: 60px;
 }
+
+.navbar {
+  --bs-bg-opacity: 1;
+  background-color: rgb(123, 234, 229) !important;
+}
