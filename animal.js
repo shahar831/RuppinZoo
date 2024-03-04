@@ -14,11 +14,12 @@ function renderAnimal() {
     "Habitat: " + currentAnimal.habitat;
   document.getElementById("isPredator").textContent =
     "Is Predator? " + currentAnimal.isPredator;
-  document.getElementById("image").src = currentAnimal.img;
+  document.getElementById("animal-image").src = currentAnimal.img;
 }
 
 const feedMeBtn = document.getElementById("feed-animal");
 const closeFeedMeBtn = document.getElementById("closeFeed");
+closeFeedMeBtn.className = "btn btn-primary";
 const modal = document.getElementById("feedDialog");
 
 feedMeBtn.addEventListener("click", () => {
@@ -81,6 +82,7 @@ const getReAnimalHtmlCard = (animal) => {
 };
 
 const btnFeedA = document.getElementById("feed-animal");
+btnFeedA.className = "btn btn-primary";
 btnFeedA.addEventListener("click", feedAnimal);
 
 function feedAnimal() {
@@ -98,6 +100,7 @@ function feedAnimal() {
   } else {
     numberOfCoins -= 2;
     currentVisitor.coins = numberOfCoins;
+    currentVisitor.AnimalFeeden.push(currentAnimal);
     localStorage.setItem("currentVisitor", JSON.stringify(currentVisitor));
 
     /**localStorage.setItem("coins", JSON.stringify(numberOfCoins));**/
@@ -105,9 +108,12 @@ function feedAnimal() {
 
   const message = document.getElementById("feedDialog");
   message.innerText = "Thank you for the food!";
+  message.appendChild(closeFeedMeBtn);
 }
 
 function visitAnimal(animalName) {
+  currentVisitor.AnimalVisited.push(animalName);
+  localStorage.setItem("currentVisitor", JSON.stringify(currentVisitor));
   localStorage.setItem("selectedAnimal", JSON.stringify(animalName));
   window.location.href = "./animal.html";
 }
@@ -119,6 +125,7 @@ function visitorGotEaten() {
   const message = document.getElementById("feedDialog");
   localStorage.removeItem("currentVisitor");
   message.innerText = "You ran out of coins! The animal must have eaten you";
+  message.appendChild(closeFeedMeBtn);
   window.location.href = "./login.html";
   // ממשו את הלוגיקה של חיה שטורפת אורח
 }
@@ -127,6 +134,7 @@ function animalEscaped() {
   const message = document.getElementById("feedDialog");
   localStorage.removeItem("selectedAnimal");
   message.innerText = "We are sorry! the animal ran away to look for food";
+  message.appendChild(closeFeedMeBtn);
   window.location.href = "./zoo.html";
   //ממשו את הלוגיקה של חיה שבורחת מגן החיות
 }

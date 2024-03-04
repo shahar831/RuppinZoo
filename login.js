@@ -6,9 +6,17 @@ const closeModal = document.querySelector("#close-button");
 const logOutBtn = document.querySelector("#logout-button");
 
 function loginAsVisitor(visitorName) {
+  updateVisitor(visitorName);
   localStorage.setItem("currentVisitor", JSON.stringify(visitorName));
-  const visitorStored = JSON.parse(localStorage.getItem("Visitor"));
-  console.log(visitorStored);
+}
+
+function updateVisitor(visitor) {
+  if (!visitor.AnimalVisited) {
+    visitor.AnimalVisited = [];
+  }
+  if (!visitor.AnimalFeeden) {
+    visitor.AnimalFeeden = [];
+  }
 }
 
 const getVisitorHTMLCard = (visitor) => {

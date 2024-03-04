@@ -1,9 +1,22 @@
 const visitorHistory = JSON.parse(localStorage.getItem("currentVisitor"));
 
-function showVisitedAnimals() {
-  let filteredVisitedAnimals = filtredanimals(visitorHistory.AnimalVisited);
+/*function initializePlayerData() {
+  const visitorHistory = {
+    name: "", // Set the initial name to empty string
+    coins: 0, // Set the initial coins to 0
+    image: "", // Set the initial image to empty string
+    visitedAnimals: [], // Initialize visited animals array
+    fedAnimals: [], // Initialize fed animals array
+  };
+  if (!localStorage.getItem("currentVisitor")) {
+    localStorage.setItem("currentVisitor", JSON.stringify(visitorHistory));
+  }
+}*/
 
-  if (playerData.visitedAnimals.length > 0) {
+function showVisitedAnimals() {
+  let filteredVisitedAnimals = filterAnimals(visitorHistory.AnimalVisited);
+
+  if (visitorHistory.AnimalVisited.length > 0) {
     const visitedDiv = document.getElementById("visited-animals");
     visitedDiv.innerHTML = "";
     const visited = document.createElement("p");
@@ -23,6 +36,112 @@ function filterAnimals(animals) {
   }
   return currNames;
 }
+
+function showFeededAnimals() {
+  if (visitorHistory.AnimalFeeden.length > 0) {
+    const fedDiv = document.getElementById("feeded-animals");
+    fedDiv.innerHTML = "";
+    visitorHistory.AnimalFeeden.forEach((animal) => {
+      const animalElement = document.createElement("p");
+      animalElement.textContent = animal.name;
+      fedDiv.appendChild(animalElement);
+    });
+  }
+}
+
+function showMostvisitedAnimal() {
+  let mostVisited = getMostVisitedAnimal(visitorHistory.AnimalVisited);
+
+  if (visitorHistory.AnimalVisited.length > 0) {
+    const visitedDiv = document.getElementById("favorite-animal");
+    visitedDiv.innerHTML = "";
+    const visited = document.createElement("p");
+    visited.innerText = mostVisited;
+    visitedDiv.appendChild(visited);
+  }
+}
+
+function getMostVisitedAnimal() {
+  if (!visitorHistory || !visitorHistory.AnimalVisited) return null;
+
+  const visitMap = {};
+
+  visitorHistory.AnimalVisited.forEach((animal) => {
+    if (visitMap[animal]) {
+      visitMap[animal]++;
+    } else {
+      visitMap[animal] = 1;
+    }
+  });
+
+  let mostVisitedAnimal;
+  let highestAnimal = 0;
+
+  for (const animal in visitMap) {
+    if (visitMap[animal] > highestAnimal) {
+      highestAnimal = visitMap[animal];
+      mostVisitedAnimal = animal;
+    }
+  }
+  return mostVisitedAnimal;
+}
+
+function showAll() {
+  showVisitedAnimals();
+  showFeededAnimals();
+  showMostvisitedAnimal();
+}
+showAll();
+
+/*function getMostVisitedAnimal() {
+  if (!visitorHistory || !visitorHistory.AnimalVisited) return null;
+
+  const visitMap = {};
+
+  visitorHistory.AnimalVisited.forEach((animal) => {
+    if (visitMap[animal]) {
+      visitMap[animal]++;
+    } else {
+      visitMap[animal] = 1;
+    }
+  });
+
+  let mostVisitedAnimal;
+  let highestAnimal = 0;
+
+  for (const animal in visitMap) {
+    if (visitMap[animal] > highestAnimal) {
+      highestAnimal = visitMap[animal];
+      mostVisitedAnimal = animal;
+    }
+  }
+  return mostVisitedAnimal;  
+}
+*/
+
+/*function MostvisitedAnimal() {
+  const visitMap = {}; //שומר את מספר הופעות של כל איבר
+  // עובר במערך כדי לספור את מספר הופעות
+  visitorHistory.AnimalVisited.forEach((element) => {
+    if (visitMap[element]) {
+      visitMap[element]++;
+    } else {
+      visitMap[element] = 1;
+    }
+  });
+
+  // מוצא את האיבר עם הכי הרבה הופעות
+  let mostVisitedAnimal;
+  let highestAnimal = 0;
+
+  for (const [element, frequency] of Object.entries(visitMap)) {
+    if (frequency > highestAnimal) {
+      highestAnimal = frequency;
+      mostVisitedAnimal = element;
+    }
+  }
+  return mostVisitedAnimal;
+}*/
 
 //ממשו את הלוגיקה שמציגה את החיות שהאורח הנוכחי ביקר בהן
 /* const animalCards = visitAnimals.map(getAnimalHtmlCard); //מערך חדש של חיות
@@ -68,18 +187,6 @@ const wrapper = document.createElement("div");
 }
 */
 
-function showFeededAnimals() {
-  if (visitorHistory.AnimalFeeden.length > 0) {
-    const fedDiv = document.getElementById("feeded-animals");
-    fedDiv.innerHTML = "";
-    visitorHistory.AnimalFeeden.forEach((animal) => {
-      const animalElement = document.createElement("p");
-      animalElement.textContent = animal.name;
-      fedDiv.appendChild(animalElement);
-    });
-  }
-}
-
 /* const animalCards = feedenAnimal.map(getAnimalHtmlCard); //מערך חדש של חיות
   const animalPlaceholder = document.getElementById("animal-cards"); //האלמנט שאליו אנחנו רוצים להכניס את הכרטיסיות
   animalPlaceholder.innerHTML = "";
@@ -97,35 +204,3 @@ function showFavoriteAnimal() {
  const theMostVisited = findMostFrequentElement(visitAnimals);
  localStorage.setItem("most", JSON.stringify(theMostVisited))
 */
-
-function ShowMostvisitedAnimal() {
-  const visitMap = {}; //שומר את מספר הופעות של כל איבר
-
-  // עובר במערך כדי לספור את מספר הופעות
-  visitorHistory.AnimalVisited.forEach((element) => {
-    if (visitMap[element]) {
-      visitMap[element]++;
-    } else {
-      visitMap[element] = 1;
-    }
-  });
-
-  // מוצא את האיבר עם הכי הרבה הופעות
-  let mostVisitedAnimal;
-  let highestAnimal = 0;
-
-  for (const [element, frequency] of Object.entries(visitMap)) {
-    if (frequency > highestAnimal) {
-      highestAnimal = frequency;
-      mostVisitedAnimal = element;
-    }
-  }
-  return mostVisitedAnimal;
-}
-
-function showAll() {
-  showVisitedAnimals();
-  showFeededAnimals();
-  ShowMostvisitedAnimal();
-}
-showAll();

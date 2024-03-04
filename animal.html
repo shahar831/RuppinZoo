@@ -19,33 +19,34 @@
     <header>
       <div class="container-fluid"></div>
     </header>
+    <section id="animal-page">
+      <div class="animalForShow">
+        <div id="image">
+          <img id="animal-image" src="" alt="animal image" />
+          <!-- show here the animal image -->
+        </div>
 
-    <div class="animalForShow">
-      <div id="image">
-        <!-- show here the animal image -->
+        <div>
+          <h1 id="name"></h1>
+          <p id="weight"></p>
+          <p id="height"></p>
+          <p id="color"></p>
+          <p id="habitat"></p>
+          <p id="isPredator"></p>
+
+          <button id="feed-animal">Feed me</button>
+
+          <dialog id="feedDialog" feed-modal>
+            <div>
+              <p id="text"></p>
+            </div>
+            <button id="closeFeed">Close</button>
+          </dialog>
+        </div>
       </div>
 
-      <div>
-        <h1 id="name"></h1>
-        <p id="weight"></p>
-        <p id="height"></p>
-        <p id="color"></p>
-        <p id="habitat"></p>
-        <p id="isPredator"></p>
-
-        <button id="feed-animal">Feed me</button>
-
-        <dialog id="feedDialog" feed-modal>
-          <div>
-            <p id="text"></p>
-          </div>
-          <button id="closeFeed">Close</button>
-        </dialog>
-      </div>
-    </div>
-
-    <div id="related-animals" class="related-animals"></div>
-
+      <div id="related-animals" class="related-animals"></div>
+    </section>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

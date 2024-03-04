@@ -1,4 +1,5 @@
 let animalsForView = [...animals];
+const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
 
 let currentFilters = {
   isPredator: null,
@@ -107,9 +108,10 @@ const clearSearchBox = () => {
 };
 
 function visitAnimal(animalName) {
+  currentVisitor.AnimalVisited.push(animalName);
+  localStorage.setItem("currentVisitor", JSON.stringify(currentVisitor));
   localStorage.setItem("selectedAnimal", JSON.stringify(animalName));
   window.location.href = "./animal.html";
-
   // ממשו את הלוגיקה של מעבר לעמוד חיה עבור החיה הספציפית שנבחרה
   // שמרו בלוקל סטורג' את החיה שנבחרה, כך שבעמוד החיה נוכל לשלוף אותה מהסטורג' ולהציגה בהתאם
 }
