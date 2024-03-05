@@ -1,4 +1,4 @@
-const visitorHistory = JSON.parse(localStorage.getItem("currentVisitor"));
+/**const visitorHistory = JSON.parse(localStorage.getItem("currentVisitor"));
 
 /*function initializePlayerData() {
   const visitorHistory = {
@@ -11,9 +11,9 @@ const visitorHistory = JSON.parse(localStorage.getItem("currentVisitor"));
   if (!localStorage.getItem("currentVisitor")) {
     localStorage.setItem("currentVisitor", JSON.stringify(visitorHistory));
   }
-}*/
+}*/ ////
 
-function showVisitedAnimals() {
+/**function showVisitedAnimals() {
   let filteredVisitedAnimals = filterAnimals(visitorHistory.AnimalVisited);
 
   if (visitorHistory.AnimalVisited.length > 0) {
@@ -91,7 +91,7 @@ function showAll() {
   showFeededAnimals();
   showMostvisitedAnimal();
 }
-showAll();
+showAll();**/
 
 /*function getMostVisitedAnimal() {
   if (!visitorHistory || !visitorHistory.AnimalVisited) return null;

@@ -87,7 +87,6 @@ btnFeedA.addEventListener("click", feedAnimal);
 
 function feedAnimal() {
   let numberOfCoins = currentVisitor.coins;
-  /**let numberOfCoins = JSON.parse(localStorage.getItem("coins"));**/
 
   if (numberOfCoins <= 0) {
     if (currentAnimal.isPredator) {
@@ -100,7 +99,7 @@ function feedAnimal() {
   } else {
     numberOfCoins -= 2;
     currentVisitor.coins = numberOfCoins;
-    currentVisitor.AnimalFeeden.push(currentAnimal);
+    /**currentVisitor.AnimalFeeden.push(currentAnimal);**/
     localStorage.setItem("currentVisitor", JSON.stringify(currentVisitor));
 
     /**localStorage.setItem("coins", JSON.stringify(numberOfCoins));**/
@@ -118,16 +117,12 @@ function visitAnimal(animalName) {
   window.location.href = "./animal.html";
 }
 
-// ממשו את הלוגיקה של האכלת חיה
-// במידה ואין מספיק מטבעות, טפלו בהתאם להנחיות במטלה
-
 function visitorGotEaten() {
   const message = document.getElementById("feedDialog");
   localStorage.removeItem("currentVisitor");
   message.innerText = "You ran out of coins! The animal must have eaten you";
   message.appendChild(closeFeedMeBtn);
   window.location.href = "./login.html";
-  // ממשו את הלוגיקה של חיה שטורפת אורח
 }
 
 function animalEscaped() {
@@ -136,7 +131,6 @@ function animalEscaped() {
   message.innerText = "We are sorry! the animal ran away to look for food";
   message.appendChild(closeFeedMeBtn);
   window.location.href = "./zoo.html";
-  //ממשו את הלוגיקה של חיה שבורחת מגן החיות
 }
 
 window.addEventListener("load", () => {

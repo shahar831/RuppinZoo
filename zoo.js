@@ -1,7 +1,7 @@
 let animalsForView = [...animals];
 const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
 
-let currentFilters = {
+/**let currentFilters = {
   isPredator: null,
   habitat: null,
   weight: null,
@@ -20,7 +20,7 @@ function applyFilters() {
     );
   });
   renderAvailableAnimals();
-}
+}**/
 
 function renderAvailableAnimals() {
   const animalCards = animalsForView.map(getAnimalHtmlCard); //מערך חדש של חיות
@@ -60,7 +60,7 @@ const getAnimalHtmlCard = (animal) => {
     <img class="card-img-top" src="${animal.img}" alt="${animal.name}" />
     <div class="card-body">
       <br />
-      <h5 class="card-title">The ${animal.name}</h5>
+      <h5 class="card-title">${animal.name}</h5>
       <p class="card-text">
         <br />Weight:${animal.weight}<br />
         Height: ${animal.height}<br />
@@ -116,7 +116,7 @@ function visitAnimal(animalName) {
   // שמרו בלוקל סטורג' את החיה שנבחרה, כך שבעמוד החיה נוכל לשלוף אותה מהסטורג' ולהציגה בהתאם
 }
 
-function setFilter(filterKey, filterValue) {
+/**function setFilter(filterKey, filterValue) {
   currentFilters[filterKey] = filterValue === "any" ? null : filterValue;
   applyFilters();
 }
@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initial rendering of animals
   renderAvailableAnimals();
-});
+});/** */
 
 document.body.insertAdjacentElement("afterbegin", getSearchBox());
 window.addEventListener("load", renderAvailableAnimals);

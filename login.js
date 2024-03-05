@@ -113,12 +113,12 @@ logOutBtn.addEventListener("click", () => {
   logout();
 });
 
-function cheackIfSomeoneLogin() {
+/**function cheackIfSomeoneLogin() {
   if (localStorage.getItem("currentVisitor")) {
     dialog.show();
   }
   return;
-}
+}**/
 
 document.body.insertAdjacentElement("afterbegin", getSearchBox());
 window.addEventListener("load", renderVisitors /**cheackIfSomeoneLogin**/);
