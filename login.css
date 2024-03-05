@@ -65,7 +65,8 @@ body {
   min-height: 90vh;
 }
 
-#btnZoo {
+#btnZoo,
+#btnLogOut {
   color: #fff;
   background-color: #9bcf53;
   border-color: #ededed;

@@ -207,7 +207,9 @@ generateDataset();
 
 //********************** */
 function logout() {
+  alert("Come visit again!");
   localStorage.removeItem("currentVisitor");
+  window.location.href = "./signup.html";
   //ממשו את הלוגיקה שמתנתקת מאורח מחובר
   // שימו לב לנקות את השדה המתאים בלוקל סטורג'
 }

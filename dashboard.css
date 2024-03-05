@@ -1,4 +1,6 @@
-#warpDash {
+body,
+html {
+  height: 100%;
   background-image: url("Animals_pictures/background4.png");
   height: 100%;
   background-position: center;

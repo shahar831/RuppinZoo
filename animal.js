@@ -99,7 +99,7 @@ function feedAnimal() {
   } else {
     numberOfCoins -= 2;
     currentVisitor.coins = numberOfCoins;
-    /**currentVisitor.AnimalFeeden.push(currentAnimal);**/
+    currentVisitor.AnimalFeeden.push(currentAnimal);
     localStorage.setItem("currentVisitor", JSON.stringify(currentVisitor));
 
     /**localStorage.setItem("coins", JSON.stringify(numberOfCoins));**/
