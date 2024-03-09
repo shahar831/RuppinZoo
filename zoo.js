@@ -1,26 +1,108 @@
 let animalsForView = [...animals];
 const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
 
-/**let currentFilters = {
-  isPredator: null,
-  habitat: null,
+const currentFilters = {
+  color: null,
   weight: null,
   height: null,
-  color: null,
+  habitat: null,
+  isPredator: null,
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Attach event listeners to the weight and height input filters
+  document
+    .getElementById("weight-filter")
+    .addEventListener("input", function () {
+      setFilter("weight", this.value ? parseFloat(this.value) : null);
+    });
+
+  document
+    .getElementById("height-filter")
+    .addEventListener("input", function () {
+      setFilter("height", this.value ? parseFloat(this.value) : null);
+    });
+
+  document
+    .getElementById("clear-filters-btn")
+    .addEventListener("click", clearFiltersAndRenderAll);
+
+  // Setup dropdown filters
+  setupDropdownFilters();
+
+  // Initial rendering of animals
+  renderAvailableAnimals();
+});
+
+function setupDropdownFilters() {
+  document.querySelectorAll(".btn-group").forEach((group) => {
+    const button = group.querySelector("button");
+    if (!button) return;
+
+    let filterKey;
+    if (button.textContent.includes("Color")) {
+      filterKey = "color";
+    } else if (button.textContent.includes("Habitat")) {
+      filterKey = "habitat";
+    } else if (button.textContent.includes("Is Predator?")) {
+      filterKey = "isPredator";
+    }
+
+    if (filterKey) {
+      group.querySelectorAll(".dropdown-item").forEach((item) => {
+        item.addEventListener("click", function () {
+          let filterValue =
+            filterKey === "isPredator"
+              ? this.textContent.trim().toLowerCase() === "yes"
+              : this.textContent.trim().toLowerCase();
+          setFilter(filterKey, filterValue);
+        });
+      });
+    }
+  });
+}
+
+function setFilter(filterKey, filterValue) {
+  currentFilters[filterKey] = filterValue === "any" ? null : filterValue;
+  applyFilters();
+}
+
+function clearFiltersAndRenderAll() {
+  // Reset all filters
+  Object.keys(currentFilters).forEach((key) => {
+    currentFilters[key] = null;
+  });
+
+  // You might want to also clear any visible representations of the filters in the UI
+  document.getElementById("weight-filter").value = "";
+  document.getElementById("height-filter").value = "";
+  // Reset any other UI elements related to filters, if necessary
+
+  // Re-render the animals
+  applyFilters();
+}
+
 function applyFilters() {
   animalsForView = animals.filter((animal) => {
-    return (
-      (!currentFilters.isPredator ||
-        animal.isPredator === currentFilters.isPredator) &&
-      (!currentFilters.habitat || animal.habitat === currentFilters.habitat) &&
-      (!currentFilters.weight || animal.weight >= currentFilters.weight) &&
-      (!currentFilters.height || animal.height >= currentFilters.height) &&
-      (!currentFilters.color || animal.color === currentFilters.color)
-    );
+    return Object.entries(currentFilters).every(([key, value]) => {
+      if (value === null) return true; // If no filter is set, don't filter out this animal
+
+      if (key === "weight" && animal[key]) {
+        return parseFloat(animal[key]) >= parseFloat(value); // Show animals with weight >= user selected weight
+      } else if (key === "height" && animal[key]) {
+        return parseFloat(animal[key]) >= parseFloat(value); // Show animals with height >= user selected height
+      } else {
+        // For other filters, just check for equality (or any other logic you've implemented)
+        return (
+          animal[key].toString().toLowerCase() ===
+          value.toString().toLowerCase()
+        );
+      }
+    });
   });
+
   renderAvailableAnimals();
-}**/
+}
 
 function renderAvailableAnimals() {
   const animalCards = animalsForView.map(getAnimalHtmlCard); //מערך חדש של חיות
@@ -108,61 +190,16 @@ const clearSearchBox = () => {
 };
 
 function visitAnimal(animalName) {
+  let currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
+  if (!currentVisitor || !Array.isArray(currentVisitor.AnimalVisited)) {
+    currentVisitor = { AnimalVisited: [] };
+  }
   currentVisitor.AnimalVisited.push(animalName);
+  // Update the currentVisitor object in localStorage
   localStorage.setItem("currentVisitor", JSON.stringify(currentVisitor));
   localStorage.setItem("selectedAnimal", JSON.stringify(animalName));
   window.location.href = "./animal.html";
-  // ממשו את הלוגיקה של מעבר לעמוד חיה עבור החיה הספציפית שנבחרה
-  // שמרו בלוקל סטורג' את החיה שנבחרה, כך שבעמוד החיה נוכל לשלוף אותה מהסטורג' ולהציגה בהתאם
 }
-
-/**function setFilter(filterKey, filterValue) {
-  currentFilters[filterKey] = filterValue === "any" ? null : filterValue;
-  applyFilters();
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  // Event listener for the weight filter
-  document
-    .getElementById("weight-filter")
-    .addEventListener("input", function () {
-      setFilter("weight", this.value ? parseFloat(this.value) : null);
-    });
-
-  // Event listener for the height filter
-  document
-    .getElementById("height-filter")
-    .addEventListener("input", function () {
-      setFilter("height", this.value ? parseFloat(this.value) : null);
-    });
-
-  // Event listener for the color filter
-  document
-    .getElementById("color-filter")
-    .addEventListener("change", function () {
-      setFilter("color", this.value || null);
-    });
-
-  // Event listener for the habitat filter
-  document
-    .getElementById("habitat-filter")
-    .addEventListener("change", function () {
-      setFilter("habitat", this.value || null);
-    });
-
-  // Event listener for the isPredator filter
-  document
-    .getElementById("predator-filter")
-    .addEventListener("change", function () {
-      setFilter(
-        "isPredator",
-        this.value === "Yes" ? "Yes" : this.value === "No" ? "No" : null
-      );
-    });
-
-  // Initial rendering of animals
-  renderAvailableAnimals();
-});/** */
 
 document.body.insertAdjacentElement("afterbegin", getSearchBox());
 window.addEventListener("load", renderAvailableAnimals);

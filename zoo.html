@@ -20,18 +20,19 @@
       <h3 id="zoo-title">
         Welcome To RuppinZoo! Go Visit Your Favorite Animal
       </h3>
+
       <div class="filterDiv">
-        <div class="input-group input-group-sm mb-3" style="width: 10%">
+        <div class="input-group input-group-sm mb-3" style="width: 15%">
           <span class="input-group-text" id="inputGroup-sizing-sm">Weight</span>
           <input
+            id="weight-filter"
             type="text"
             class="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-sm"
-            id="weight-filter"
           />
         </div>
-        <div class="input-group input-group-sm mb-3" style="width: 10%">
+        <div class="input-group input-group-sm mb-3" style="width: 15%">
           <span class="input-group-text" id="inputGroup-sizing-sm">Height</span>
           <input
             type="text"
@@ -44,16 +45,14 @@
         <div class="btn-group">
           <button
             type="button"
-            class="btn c dropdown-toggle"
+            class="btn dropdown-toggle"
             data-bs-toggle="dropdown"
-            aria-expanded="false"
           >
             Color
           </button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item">Brown</a></li>
             <li><a class="dropdown-item">Grey</a></li>
-            <li><hr class="dropdown-divider" /></li>
           </ul>
         </div>
         <div class="btn-group">
@@ -70,7 +69,7 @@
             <li><a class="dropdown-item">Sea</a></li>
           </ul>
         </div>
-        <!-- Example single danger button -->
+
         <div class="btn-group">
           <button
             type="button"
@@ -85,6 +84,9 @@
             <li><a class="dropdown-item" href="#">No</a></li>
           </ul>
         </div>
+        <button id="clear-filters-btn" class="btn btn-warning">
+          Clear Filters
+        </button>
       </div>
     </div>
     <div id="animal-cards"></div>

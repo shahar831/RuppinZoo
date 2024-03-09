@@ -85,24 +85,29 @@ const btnFeedA = document.getElementById("feed-animal");
 btnFeedA.className = "btn btn-primary";
 btnFeedA.addEventListener("click", feedAnimal);
 
+function updateNavbarCoins() {
+  const coinCountElement = document.getElementById("coin-count");
+  const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
+  if (currentVisitor && coinCountElement) {
+    coinCountElement.textContent = currentVisitor.coins;
+  }
+}
+
 function feedAnimal() {
   let numberOfCoins = currentVisitor.coins;
 
   if (numberOfCoins <= 0) {
     if (currentAnimal.isPredator) {
-      /**למחוק את האורח ממאגר האורחים */
       visitorGotEaten();
     } else {
       animalEscaped();
-      /**למחוק את החיה ממאגר גן החיות */
     }
   } else {
     numberOfCoins -= 2;
     currentVisitor.coins = numberOfCoins;
     currentVisitor.AnimalFeeden.push(currentAnimal);
     localStorage.setItem("currentVisitor", JSON.stringify(currentVisitor));
-
-    /**localStorage.setItem("coins", JSON.stringify(numberOfCoins));**/
+    updateNavbarCoins();
   }
 
   const message = document.getElementById("feedDialog");

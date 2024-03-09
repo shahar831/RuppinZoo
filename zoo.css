@@ -2,8 +2,10 @@ body {
   background-size: cover;
   background-size: 100%;
   justify-content: center;
-  background-size: cover;
-  /**background-size: 90%**/
+  height: 100%;
+  background-image: url("Animals_pictures/leaf3.jpg");
+  background-position: center;
+  background-repeat: repeat;
 }
 
 #animal-cards {
@@ -13,16 +15,19 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   margin: 30px;
+  padding: 30px;
 }
 
 #zoo-title {
   font-family: "Kaushan Script", cursive;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   text-align: center;
   width: 200%;
-  margin-top: 20px;
-  font-size: 45px;
+  margin: 50px;
+  font-size: 55px;
+  color: #1a5d1a;
+  text-shadow: 2px 2px 5px;
 }
 
 .animal-class {
@@ -32,9 +37,9 @@ body {
   align-items: center;
   border-radius: 20%;
   border-color: rgb(127, 157, 255);
-  background-color: rgb(123, 234, 229);
+  background-color: #fffbc1;
   box-shadow: inset 0 -3em 3em rgba(209, 236, 209, 0.3), 0 0 0 2px white,
-    0.3em 0.3em 1em rgba(139, 237, 128, 0.6);
+    0.3em 0.3em 1em #416d19;
 }
 
 .card-body {
@@ -45,21 +50,23 @@ body {
   display: flex;
 }
 
-#Visit {
+#Visit,
+#clear-filters-btn,
+#clear-filter-btn {
   --bs-btn-color: #fff;
   --bs-btn-bg: #9bcf53;
-  --bs-btn-border-color: #9bcf53;
+  --bs-btn-border-color: #294009;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #9bcf53;
-  --bs-btn-hover-border-color: #9bcf53;
+  --bs-btn-hover-border-color: #294009;
   --bs-btn-focus-shadow-rgb: 49, 132, 253;
   --bs-btn-active-color: #ffffff;
   --bs-btn-active-bg: #9bcf53;
-  --bs-btn-active-border-color: #9bcf53;
+  --bs-btn-active-border-color: #294009;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #fff;
   --bs-btn-disabled-bg: #9bcf53;
-  --bs-btn-disabled-border-color: #9bcf53;
+  --bs-btn-disabled-border-color: #294009;
   border-radius: 15px;
   margin: 20px;
 }
@@ -88,15 +95,25 @@ input.form-control {
   align-items: center;
   gap: 10px;
   border-radius: 30px;
-  background-color: rgb(123, 234, 229);
+  background-color: #fffbc1;
   width: 1000px;
-  margin: 40px;
+  margin: 60px;
   box-shadow: inset 0 -3em 3em rgba(209, 236, 209, 0.3), 0 0 0 2px white,
-    0.3em 0.3em 1em rgba(25, 139, 12, 0.6);
+    0.3em 0.3em 1em #9bcf53;
   padding: 2px;
 }
 
 #navbarID {
-  --bs-bg-opacity: 1;
-  background-color: rgb(123, 234, 229) !important;
+  background-color: #fffbc1 !important;
+}
+
+.empty-result {
+  color: #1a5d1a;
+  border-color: #1a5d1a;
+  background-color: #fffbc1;
+  border-radius: 15px;
+  width: auto;
+  box-shadow: inset 0 -3em 3em rgba(209, 236, 209, 0.3), 0 0 0 2px white,
+    0.3em 0.3em 1em #9bcf53;
+  padding: 10px;
 }

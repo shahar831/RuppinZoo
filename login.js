@@ -1,10 +1,6 @@
 const visitor = JSON.parse(localStorage.getItem("visitors"));
 let visitorsForView = [...visitors];
 
-/**const dialog = document.querySelector("#visitors-dialog");
-const closeModal = document.querySelector("#close-button");
-const logOutBtn = document.querySelector("#logout-button");**/
-
 function loginAsVisitor(visitorName) {
   updateVisitor(visitorName);
   localStorage.setItem("currentVisitor", JSON.stringify(visitorName));
@@ -33,61 +29,19 @@ const getVisitorHTMLCard = (visitor) => {
   wrapper.className = "visitors-card";
   wrapper.innerHTML = template;
 
-  // Create and append the Login button
   const btnZoo = document.createElement("button");
   btnZoo.id = "btnZoo";
   btnZoo.className = "btn btn-primary";
   btnZoo.innerText = "Login";
   wrapper.appendChild(btnZoo);
 
-  // Create and append the Logout button
-  const btnLogOut = document.createElement("button");
-  btnLogOut.id = "btnLogOut";
-  btnLogOut.className = "btn btn-primary";
-  btnLogOut.innerText = "Logout";
-  wrapper.appendChild(btnLogOut);
-
   btnZoo.addEventListener("click", () => {
     loginAsVisitor(visitor);
     window.location.href = "./zoo.html";
   });
 
-  btnLogOut.addEventListener("click", () => {
-    if (localStorage.getItem("currentVisitor")) {
-      logout(); // Ensure this function correctly handles the logout logic
-    } else {
-      alert("You must log in first");
-    }
-  });
-
   return wrapper;
 };
-
-/**const wrapper = document.createElement("div");
-wrapper.className = "visitors-card";
-wrapper.innerHTML = template;
-/*wrapper.addEventListener("click", () => handleVisitorsClick(visitor));
-
-const btnZoo = document.createElement("button");
-btnZoo.id = "btnZoo";
-btnZoo.className = "btn btn-primary";
-btnZoo.innerText = "Login";
-const btnLogOut = document.createElement("button");
-btnLogOut.id = "btnlogO";
-btnLogOut.className = "btn btn-primary";
-btnLogOut.innerText = "Logout";
-wrapper.appendChild(btnZoo);
-wrapper.appendChild(btnLogOut);
-
-wrapper.addEventListener("click", (e) => {
-  const clickedItem = e.target;
-  if (clickedItem.nodeName === "BUTTON") {
-    loginAsVisitor(visitor);
-    window.location.href = "./zoo.html";
-  }
-});
-
-return wrapper;**/
 
 const getSearchBox = () => {
   const queryInput = document.createElement("input");
@@ -99,10 +53,28 @@ const getSearchBox = () => {
     visitorsForView = visitor.filter((visitor) =>
       visitor.name.includes(e.target.value)
     );
+
     renderVisitors();
   });
   return queryInput;
 };
+
+function createLogoutButton() {
+  const btnLogOut = document.createElement("button");
+  btnLogOut.id = "btnLogOut";
+  btnLogOut.className = "btn btn-primary";
+  btnLogOut.innerText = "Logout";
+
+  btnLogOut.addEventListener("click", () => {
+    if (localStorage.getItem("currentVisitor")) {
+      logout(); // Ensure this function correctly handles the logout logic
+    } else {
+      alert("You must log in first");
+    }
+  });
+
+  return btnLogOut;
+}
 
 const getEmptyCardsHTMLTemplate = () => {
   const templateWrapper = document.createElement("div");
@@ -147,7 +119,6 @@ const handleLogOut = () => {
   let btnLog = document.getElementById("btnlogO");
   btnLog.addEventListener("click", () => {
     if (localStorage.getItem("currentVisitor")) {
-      alert("please login again after submitted");
       logout();
     } else {
       alert("you must login first");
@@ -155,19 +126,7 @@ const handleLogOut = () => {
   });
 };
 
-/**function checkIfSomeoneLogin() {
-  if (localStorage.getItem("currentVisitor")) {
-    alert("You must provide your personal details");
-    /**dialog.showModal(); // Using showModal() instead of show()
-  }
-  return;
-}
-
-closeModal.addEventListener("click", () => {
-  dialog.close();
-});
-
-logOutBtn.addEventListener("click", () => {
+/**logOutBtn.addEventListener("click", () => {
   logout();
 });**/
 
@@ -177,9 +136,51 @@ logOutBtn.addEventListener("click", () => {
   closeButton.addEventListener("click", () => dialog.close());
   return closeButton;
 };**/
+function checkLoginAndShowModal() {
+  const modal = document.getElementById("loginModal");
+  const span = document.getElementsByClassName("close")[0];
 
-document.body.insertAdjacentElement("afterbegin", getSearchBox());
-window.addEventListener("load", renderVisitors, handleLogOut);
+  if (localStorage.getItem("currentVisitor")) {
+    modal.style.display = "block";
+
+    span.onclick = function () {
+      modal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+
+    const logoutButton = document.getElementById("logoutButton");
+    logoutButton.addEventListener("click", () => {
+      logout();
+      modal.style.display = "none";
+    });
+
+    const closeButton = document.getElementById("closeBtn");
+    closeButton.addEventListener("click", () => {
+      modal.style.display = "none";
+      return;
+      // Close the modal when "No" button is clicked
+    });
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  checkLoginAndShowModal();
+  const searchBox = getSearchBox();
+  document.body.insertAdjacentElement("afterbegin", searchBox);
+
+  const placeholder = document.getElementById("placeholder");
+  if (placeholder) {
+    const logoutBtn = createLogoutButton();
+    placeholder.insertAdjacentElement("beforebegin", logoutBtn); // Place it before the placeholder
+  }
+
+  renderVisitors();
+});
 
 /**const handleVisitorsClick = (visitor) => {
   dialog.innerHTML = "";

@@ -210,8 +210,6 @@ function logout() {
   alert("Come visit again!");
   localStorage.removeItem("currentVisitor");
   window.location.href = "./signup.html";
-  //ממשו את הלוגיקה שמתנתקת מאורח מחובר
-  // שימו לב לנקות את השדה המתאים בלוקל סטורג'
 }
 
 function createVisitorsDropdownItems() {
@@ -247,6 +245,16 @@ const handleDashClick = () => {
     console.log("Dash button not found!");
   }
 };
+const handleZooClick = () => {
+  const zooBtn = document.getElementById("zooBtn");
+  if (dashBtn)
+    zooBtn.addEventListener("click", () => {
+      window.location.href = "./zoo.html";
+    });
+  else {
+    console.log("Dash button not found!");
+  }
+};
 
 const addNavbar = () => {
   let visitorData = localStorage.getItem("currentVisitor");
@@ -268,7 +276,7 @@ const addNavbar = () => {
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page">Coins: ${visitorData.coins}</a>
+            <a class="nav-link active" aria-current="page">Coins: <span id="coin-count">${visitorData.coins}</span></a>
             </li>
             
             <li class="nav-item">
@@ -276,6 +284,9 @@ const addNavbar = () => {
             </li>
             <li class="nav-item">
             <button id ="dashBtn" class="nav-link active reset" aria-current="page">Dashboard</button>
+            </li>
+            <li class="nav-item">
+            <button id ="zooBtn" class="nav-link active reset" aria-current="page">Zoo</button>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -296,17 +307,16 @@ const addNavbar = () => {
   wrapper2.innerHTML = navbarHTML;
 
   if (
-    [
-      "/C:/Users/User/Desktop/Ruppin/ThirdYear/FrontEnd/HomeAssignment3/animals/zoo.html",
-      "/C:/Users/User/Desktop/Ruppin/ThirdYear/FrontEnd/HomeAssignment3/animals/animal.html",
-      "/C:/Users/User/Desktop/Ruppin/ThirdYear/FrontEnd/HomeAssignment3/animals/dashboard.html",
-    ].includes(window.location.pathname)
+    ["zoo.html", "animal.html", "dashboard.html"].some((page) =>
+      window.location.pathname.endsWith(page)
+    )
   ) {
     console.log("Adding navbar");
     document.body.prepend(wrapper2);
   }
 
   handleResetClick();
+  handleZooClick();
   handleDashClick();
 
   return wrapper2;

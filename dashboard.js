@@ -14,14 +14,16 @@ function initializePlayerData() {
 }
 
 function showVisitedAnimals() {
-  let filteredVisitedAnimals = filterAnimals(visitorHistory.AnimalVisited);
-
   if (visitorHistory.AnimalVisited.length > 0) {
     const visitedDiv = document.getElementById("visited-animals");
     visitedDiv.innerHTML = "";
-    const visited = document.createElement("p");
-    visited.innerText = filteredVisitedAnimals;
-    visitedDiv.appendChild(visited);
+    const filteredVisitedAnimals = filterAnimals(visitorHistory.AnimalVisited);
+    filteredVisitedAnimals.forEach((animal) => {
+      const visited = document.createElement("p");
+      visited.textContent = animal + ", ";
+      visitedDiv.appendChild(visited);
+      visitedDiv.appendChild(document.createElement("br"));
+    });
   }
 }
 
@@ -50,14 +52,67 @@ function showFeededAnimals() {
   }
 }
 
+/*function createBarChart(containerId, animalData) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = "";
+
+  const animalCounts = countAnimalOccurrences(animalData, "name");
+
+  for (const [animal, count] of animalCounts) {
+    const bar = document.createElement("div");
+    bar.className = "bar";
+    bar.style.height = `${count * 10}px`;
+    // Adjust the height as needed
+
+    const label = document.createElement("div");
+    label.className = "bar-label";
+    label.textContent = `${animal}: ${count} ${count > 1 ? "" : ""}`;
+
+    bar.appendChild(label);
+    container.appendChild(bar);
+  }
+}
+
+function countAnimalOccurrences(animalData, propertyName) {
+  const counts = new Map();
+
+  animalData.forEach((animal) => {
+    const propertyValue = animal[propertyName];
+    counts.set(propertyValue, (counts.get(propertyValue) || 0) + 1);
+  });
+
+  return counts;
+}
+
+function showVisitedAnimals() {
+  const visitedDiv = document.getElementById("visited-animals");
+  const filteredVisited = visitorHistory.AnimalVisited;
+  createBarChart("visited-animals", filteredVisited);
+}
+
+function showFeededAnimals() {
+  const fedDiv = document.getElementById("feeded-animals");
+  const filteredFed = visitorHistory.AnimalFeeden;
+  createBarChart("feeded-animals", filteredFed);
+}
+}*/
+
 function showMostvisitedAnimal() {
-  let mostVisited = getMostVisitedAnimal(visitorHistory.AnimalVisited);
+  let mostVisitedImage = showAnimal();
+
   if (visitorHistory.AnimalVisited.length > 0) {
     const visitedDiv = document.getElementById("favorite-animal");
     visitedDiv.innerHTML = "";
-    const visited = document.createElement("p");
-    visited.innerText = mostVisited;
-    visitedDiv.appendChild(visited);
+
+    if (mostVisitedImage) {
+      const visitedImage = document.createElement("img");
+      visitedImage.src = mostVisitedImage;
+      visitedImage.alt = "Favorite Animal";
+      visitedDiv.appendChild(visitedImage);
+    } else {
+      // Display a message if there's no most visited animal
+      const noAnimalMessage = document;
+    }
   }
 }
 
@@ -79,6 +134,19 @@ function getMostVisitedAnimal() {
     }
   });
   return mostVisited;
+}
+
+function showAnimal() {
+  let mostVisited = getMostVisitedAnimal(visitorHistory.AnimalVisited);
+  let favoriteAnimalImage = null;
+
+  animals.forEach((animal) => {
+    if (mostVisited === animal.name) {
+      favoriteAnimalImage = animal.img;
+    }
+  });
+
+  return favoriteAnimalImage;
 }
 
 /**function renderAnimal() {
