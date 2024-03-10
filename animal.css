@@ -48,8 +48,8 @@ html {
 #animal-image {
   float: right;
   margin: 20px;
-  height: 400px;
-  width: 320px;
+  height: 370px;
+  width: 290px;
 }
 
 #Visit,
@@ -124,7 +124,7 @@ html {
   box-shadow: inset 0 -3em 3em rgba(209, 236, 209, 0.3), 0 0 0 2px #b67352,
     0.3em 0.3em 1em rgba(17, 59, 12, 0.6);
   height: 340px;
-  width: 210px;
+  width: 220px;
   transform: scale(0.8);
   opacity: 0.85;
   margin-top: 60px;
