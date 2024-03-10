@@ -19,6 +19,7 @@ html {
   position: absolute;
   top: 38%;
   left: 36%;
+  z-index: 1;
 }
 
 #warpDash {
@@ -83,12 +84,21 @@ h3 {
 .navbar {
   --bs-bg-opacity: 1;
   background-color: #fffbc1 !important;
+  z-index: 1000;
 }
 
 @media (max-width: 768px) {
   #favorite-animal img {
     width: 30vw;
     margin-right: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  #favorite-animal img {
+    width: 30vw;
+    margin-right: 20px;
+    top: 42%;
   }
 }
 
@@ -101,11 +111,12 @@ h3 {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 400px) {
   .right,
   .left {
     width: 20vw;
     margin: 10px;
     padding: 10px;
+    top: 50%;
   }
 }
