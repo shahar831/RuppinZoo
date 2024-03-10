@@ -129,3 +129,10 @@ html {
   opacity: 0.85;
   margin-top: 60px;
 }
+
+#colorNav,
+#resetB,
+#dashBtn,
+#zooBtn {
+  color: #25591e;
+}

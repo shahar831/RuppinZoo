@@ -269,14 +269,14 @@ const addNavbar = () => {
 
   const navbarHTML = `
 <div class="container-fluid">
-    <a class="navbar-brand">${visitorData.name}</a>
+    <a class="navbar-brand" id ="colorNav">${visitorData.name}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page">Coins: <span id="coin-count">${visitorData.coins}</span></a>
+            <a class="nav-link active" id ="colorNav" aria-current="page">Coins: <span id="coin-count">${visitorData.coins}</span></a>
             </li>
             
             <li class="nav-item">
@@ -288,8 +288,8 @@ const addNavbar = () => {
             <li class="nav-item">
             <button id ="zooBtn" class="nav-link active reset" aria-current="page">Zoo</button>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <li class="nav-item dropdown" >
+                <a class="nav-link dropdown-toggle" id ="colorNav" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     All Visitors
                 </a>
                 <ul class="dropdown-menu">

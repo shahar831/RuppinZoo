@@ -73,10 +73,8 @@ function clearFiltersAndRenderAll() {
     currentFilters[key] = null;
   });
 
-  // You might want to also clear any visible representations of the filters in the UI
   document.getElementById("weight-filter").value = "";
   document.getElementById("height-filter").value = "";
-  // Reset any other UI elements related to filters, if necessary
 
   // Re-render the animals
   applyFilters();
@@ -85,12 +83,12 @@ function clearFiltersAndRenderAll() {
 function applyFilters() {
   animalsForView = animals.filter((animal) => {
     return Object.entries(currentFilters).every(([key, value]) => {
-      if (value === null) return true; // If no filter is set, don't filter out this animal
+      if (value === null) return true;
 
       if (key === "weight" && animal[key]) {
-        return parseFloat(animal[key]) >= parseFloat(value); // Show animals with weight >= user selected weight
+        return parseFloat(animal[key]) >= parseFloat(value);
       } else if (key === "height" && animal[key]) {
-        return parseFloat(animal[key]) >= parseFloat(value); // Show animals with height >= user selected height
+        return parseFloat(animal[key]) >= parseFloat(value);
       } else {
         // For other filters, just check for equality (or any other logic you've implemented)
         return (

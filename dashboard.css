@@ -49,7 +49,7 @@ html {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between; /* Use space-between to space out flex items */
+  justify-content: space-between;
   gap: 300px;
 }
 
