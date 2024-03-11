@@ -49,12 +49,11 @@ html {
     0.3em 0.3em 1em rgba(139, 237, 128, 0.6);
   width: 20vw;
   height: auto;
-  font-size: 2.5vw;
+  font-size: 1.5vw;
   margin: 1vw 5vw;
   transform: scale(0.8);
   opacity: 0.9;
-  font-size: 32px;
-  margin-top: 60px;
+  margin-top: 100px;
   position: relative;
 }
 
@@ -89,8 +88,10 @@ h3 {
 
 @media (max-width: 768px) {
   #favorite-animal img {
-    width: 30vw;
-    margin-right: 20px;
+    width: 45vw;
+    height: 60vw;
+    margin-right: 60px;
+    margin-top: -5vw;
   }
 }
 
@@ -107,7 +108,7 @@ h3 {
   .left {
     width: 20vw;
     font-size: 4vw;
-    margin-top: 10vw;
+    margin-top: 60vw;
   }
 }
 
@@ -115,8 +116,8 @@ h3 {
   .right,
   .left {
     width: 20vw;
-    margin: 10px;
-    padding: 10px;
+    font-size: 4vw;
+    margin-top: 60vw;
     top: 50%;
   }
 }
