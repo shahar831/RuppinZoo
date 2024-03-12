@@ -10,7 +10,6 @@ const currentFilters = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Attach event listeners to the weight and height input filters
   document
     .getElementById("weight-filter")
     .addEventListener("input", function () {
@@ -90,7 +89,6 @@ function applyFilters() {
       } else if (key === "height" && animal[key]) {
         return parseFloat(animal[key]) >= parseFloat(value);
       } else {
-        // For other filters, just check for equality (or any other logic you've implemented)
         return (
           animal[key].toString().toLowerCase() ===
           value.toString().toLowerCase()
@@ -193,7 +191,6 @@ function visitAnimal(animalName) {
     currentVisitor = { AnimalVisited: [] };
   }
   currentVisitor.AnimalVisited.push(animalName);
-  // Update the currentVisitor object in localStorage
   localStorage.setItem("currentVisitor", JSON.stringify(currentVisitor));
   localStorage.setItem("selectedAnimal", JSON.stringify(animalName));
   window.location.href = "./animal.html";

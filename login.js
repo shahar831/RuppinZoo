@@ -126,16 +126,6 @@ const handleLogOut = () => {
   });
 };
 
-/**logOutBtn.addEventListener("click", () => {
-  logout();
-});**/
-
-/**const getCloseModalHTMLButton = () => {
-  const closeButton = document.createElement("button");
-  closeButton.innerText = "Close modal";
-  closeButton.addEventListener("click", () => dialog.close());
-  return closeButton;
-};**/
 function checkLoginAndShowModal() {
   const modal = document.getElementById("loginModal");
   const span = document.getElementsByClassName("close")[0];
@@ -163,7 +153,6 @@ function checkLoginAndShowModal() {
     closeButton.addEventListener("click", () => {
       modal.style.display = "none";
       return;
-      // Close the modal when "No" button is clicked
     });
   }
 }
@@ -176,14 +165,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const placeholder = document.getElementById("placeholder");
   if (placeholder) {
     const logoutBtn = createLogoutButton();
-    placeholder.insertAdjacentElement("beforebegin", logoutBtn); // Place it before the placeholder
+    placeholder.insertAdjacentElement("beforebegin", logoutBtn);
   }
 
   renderVisitors();
 });
-
-/**const handleVisitorsClick = (visitor) => {
-  dialog.innerHTML = "";
-  dialog.append(getCloseModalHTMLButton(), getVisitorHTMLCard(visitor));
-  dialog.showModal();
-};**/

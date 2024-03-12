@@ -25,34 +25,6 @@ function initializeFormEventListeners() {
   }
 }
 
-/**function createNewVisitor(event) {
-  event.preventDefault();
-
-  let validInput = validateFormInputs();
-
-  let selectedGenderElement = document.querySelector(
-    'input[name="gender"]:checked'
-  );
-  let selectedImg;
-
-  if (selectedGenderElement) {
-    let selectedGender = selectedGenderElement.value;
-
-    if (selectedGender === "Male") {
-      selectedImg = "./Animals_pictures/boy_4140068.png";
-    } else if (selectedGender === "Female") {
-      selectedImg = "./Animals_pictures/girl_4140076.png";
-    }
-  } else {
-    // Handle the case where no gender has been selected
-    selectedImg = "./Animals_pictures/user_1144709.png";
-  }
-
-  if (validInput) {
-    makeVisitor(nameInput.value, selectedImg);
-  }
-}**/
-
 function createNewVisitor(event, submitClicked) {
   event.preventDefault();
 
@@ -91,14 +63,6 @@ const validateFormInputs = () => {
   }
   return true;
 };
-/**const validateFormInputs = () => {
-  if (!nameInput.value) {
-    // validate there is text in the inputs
-    alert("You must provide your personal details");
-    return false;
-  }
-  return true;
-};**/
 
 const makeVisitor = (name, selectedImg) => {
   let foundVisitor = visitors.find((visitor) => visitor.name === name);

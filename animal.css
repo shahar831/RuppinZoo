@@ -22,7 +22,6 @@ html {
   align-items: center;
   border-radius: 20%;
   border-color: rgb(127, 157, 255);
-  /**background-color: rgb(123, 234, 229);**/
   background-color: #fffbc1;
   box-shadow: inset 0 -3em 3em rgba(209, 236, 209, 0.3), 0 0 0 1px #c27b58,
     0.3em 0.3em 1em rgba(139, 237, 128, 0.477);
@@ -119,7 +118,6 @@ html {
   align-items: center;
   border-radius: 20%;
   border-color: rgb(127, 157, 255);
-  /**background-color: rgb(123, 234, 229);**/
   background-color: #fffbc1;
   box-shadow: inset 0 -3em 3em rgba(209, 236, 209, 0.3), 0 0 0 2px #b67352,
     0.3em 0.3em 1em rgba(17, 59, 12, 0.6);

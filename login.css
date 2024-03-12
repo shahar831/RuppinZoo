@@ -24,7 +24,7 @@ body {
 }
 
 #btnLogOut {
-  margin-left: auto; /* Pushes the button to the right */
+  margin-left: auto;
 }
 #query-input {
   width: 100%;

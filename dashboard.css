@@ -86,12 +86,18 @@ h3 {
   z-index: 1000;
 }
 
+#colorNav,
+#resetB,
+#dashBtn,
+#zooBtn {
+  color: #25591e;
+}
+
 @media (max-width: 768px) {
   #favorite-animal img {
     width: 45vw;
     height: 60vw;
     margin-right: 60px;
-    margin-top: -5vw;
   }
 }
 
